@@ -1,0 +1,121 @@
+RunTitle: phase_diag
+
+CompositionSpace: 
+    - C
+    - Si
+
+EnergyCode: 
+    vasp: 
+        num_submits_to_converge: 2
+        num_rerelax: 0
+        incar: /blue/subhash/salil.bavdekar/GASP/Si_C/INCAR
+        kpoints: /blue/subhash/salil.bavdekar/GASP/Si_C/KPOINTS
+        potcars: 
+            C: /blue/subhash/salil.bavdekar/GASP/Si_C/POTCAR.C
+            Si: /blue/subhash/salil.bavdekar/GASP/Si_C/POTCAR.Si
+
+NumCalcsAtOnce: 8
+
+InitialPopulation: 
+    from_files: 
+        number: 8
+        path_to_folder: /blue/subhash/salil.bavdekar/GASP/Si_C/ref_states
+    random: 
+        number: 27
+        max_num_atoms: 8
+        allow_endpoints: True
+        volumes_per_atom: 
+            C: 10.58
+            Si: 20.44
+
+Pool: 
+    size: 25
+    num_promoted: 3
+
+Selection: 
+    num_parents: 25
+    power: 1
+
+CompositionFitnessWeight: 
+    max_weight: 0.5
+    power: 1
+
+Variations: 
+    Mating: 
+        fraction: 0.7
+        mu_cut_loc: 0.5
+        sigma_cut_loc: 0.5
+        shift_prob: 1.0
+        rotate_prob: 1.0
+        doubling_prob: 0.1
+        grow_parents: True
+        merge_cutoff: 1.0
+        halve_offspring_prob: 0.25
+    StructureMut: 
+        fraction: 0.1
+        frac_atoms_perturbed: 1.0
+        sigma_atomic_coord_perturbation: 1.0
+        max_atomic_coord_perturbation: 5.0
+        sigma_strain_matrix_element: 0.2
+    NumAtomsMut: 
+        fraction: 0.1
+        mu_num_adds: 0
+        sigma_num_adds: 1
+        scale_volume: True
+    Permutation: 
+        fraction: 0.1
+        mu_num_swaps: 2
+        sigma_num_swaps: 1
+        pairs_to_swap: 
+            - C Si
+
+Development: 
+    niggli: True
+    scale_density: True
+
+Constraints: 
+    min_num_atoms: 2
+    max_num_atoms: 16
+    max_interface_atoms: 50
+    min_lattice_length: 0.5
+    max_lattice_length: 20
+    max_scell_lattice_length: 30
+    min_lattice_angle: 40
+    max_lattice_angle: 140
+    allow_endpoints: True
+    per_species_mids: 
+        C C: 0.84
+        C Si: 1.08
+        Si Si: 1.32
+
+RedundancyGuard: 
+    lattice_length_tol: 0.05
+    lattice_angle_tol: 2
+    site_tol: 0.1
+    use_primitive_cell: True
+    attempt_supercell: True
+    rmsd_tol: 0.1
+    epa_diff: 0.0
+
+Geometry: 
+    shape: bulk
+    max_size: inf
+    min_size: -inf
+    padding: None
+
+StoppingCriteria: 
+    num_energy_calcs: 500
+
+job_specs: 
+    cores: 1
+    memory: 8GB
+    project: subhash
+    queue: gpu
+    walltime: 100:00:00
+    interface: ib0
+    job_extra: 
+        - '--qos=subhash' 
+        - '--gpus=1' 
+        - '--ntasks=1' 
+        - '--nodes=1' 
+

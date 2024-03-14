@@ -1,0 +1,121 @@
+RunTitle: phase
+
+CompositionSpace: 
+    - Si
+    - C
+
+EnergyCode: 
+    vasp: 
+        num_submits_to_converge: 2
+        num_rerelax: 0
+        incar: /blue/subhash/share/SiC/GASP/INCAR
+        kpoints: /blue/subhash/share/SiC/GASP/KPOINTS
+        potcars: 
+            Si: /blue/subhash/share/POTCARs/Si/POTCAR
+            C: /blue/subhash/share/POTCARs/C/POTCAR
+
+NumCalcsAtOnce: 4
+
+InitialPopulation: 
+    from_files: 
+        number: 17
+        path_to_folder: /blue/subhash/share/SiC/GASP/initial_phase/
+    random: 
+        number: 18
+        max_num_atoms: 32
+        allow_endpoints: True
+        volumes_per_atom: 
+            Si: 20.12
+            C: 5.64
+
+Pool: 
+    size: 25
+    num_promoted: 3
+
+Selection: 
+    num_parents: 25
+    power: 1
+
+CompositionFitnessWeight: 
+    max_weight: 0.5
+    power: 1
+
+Variations: 
+    Mating: 
+        fraction: 0.7
+        mu_cut_loc: 0.5
+        sigma_cut_loc: 0.5
+        shift_prob: 1.0
+        rotate_prob: 1.0
+        doubling_prob: 0.1
+        grow_parents: True
+        merge_cutoff: 1.0
+        halve_offspring_prob: 0.25
+    StructureMut: 
+        fraction: 0.1
+        frac_atoms_perturbed: 1.0
+        sigma_atomic_coord_perturbation: 1.0
+        max_atomic_coord_perturbation: 5.0
+        sigma_strain_matrix_element: 0.2
+    NumAtomsMut: 
+        fraction: 0.1
+        mu_num_adds: 0
+        sigma_num_adds: 1
+        scale_volume: True
+    Permutation: 
+        fraction: 0.1
+        mu_num_swaps: 2
+        sigma_num_swaps: 1
+        pairs_to_swap: 
+            - Si C
+
+Development: 
+    niggli: True
+    scale_density: True
+
+Constraints: 
+    min_num_atoms: 2
+    max_num_atoms: 32
+    max_interface_atoms: 50
+    min_lattice_length: 0.5
+    max_lattice_length: 50
+    max_scell_lattice_length: 30
+    min_lattice_angle: 40
+    max_lattice_angle: 140
+    allow_endpoints: True
+    per_species_mids: 
+        Si Si: 1.42
+        C C: 0.92
+        Si C: 1.13
+
+RedundancyGuard: 
+    lattice_length_tol: 0.05
+    lattice_angle_tol: 2
+    site_tol: 0.1
+    use_primitive_cell: True
+    attempt_supercell: True
+    rmsd_tol: 0.1
+    epa_diff: 0.0
+
+Geometry: 
+    shape: bulk
+    max_size: inf
+    min_size: -inf
+    padding: None
+
+StoppingCriteria: 
+    num_energy_calcs: 500
+
+job_specs: 
+    cores: 1
+    memory: 16GB
+    project: spearot
+    queue: gpu
+    walltime: 6-23:55:00
+    interface: ib0
+    job_extra: 
+        - '--qos=spearot' 
+        - '--gpus=1' 
+        - '--ntasks=1' 
+        - '--nodes=1' 
+

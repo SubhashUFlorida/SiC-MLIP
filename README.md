@@ -15,28 +15,28 @@ Below are examples of pair_style and pair_coeff commands to use for modeling SiC
 * CPU
 ```
     pair_style uf3 3 2
-    pair_coeff 2 2 model_coeffs/Si_Si
-    pair_coeff 1 1 model_coeffs/C_C
-    pair_coeff 1 1 1 model_coeffs/C_C_C
-    pair_coeff 1 1 2 model_coeffs/C_C_Si
-    pair_coeff 1 2 model_coeffs/C_Si
-    pair_coeff 1 2 2 model_coeffs/C_Si_Si
-    pair_coeff 2 1 1 model_coeffs/Si_C_C
-    pair_coeff 2 1 2 model_coeffs/Si_C_Si
-    pair_coeff 2 2 2 model_coeffs/Si_Si_Si
+    pair_coeff 2 2 potential_files/Si_Si
+    pair_coeff 1 1 potential_files/C_C
+    pair_coeff 1 1 1 potential_files/C_C_C
+    pair_coeff 1 1 2 potential_files/C_C_Si
+    pair_coeff 1 2 potential_files/C_Si
+    pair_coeff 1 2 2 potential_files/C_Si_Si
+    pair_coeff 2 1 1 potential_files/Si_C_C
+    pair_coeff 2 1 2 potential_files/Si_C_Si
+    pair_coeff 2 2 2 potential_files/Si_Si_Si
 ```
 * GPU (Kokkos)
 ```
     pair_style uf3 3 2
-    pair_coeff 2 2 model_coeffs/Si_Si
-    pair_coeff 1 1 model_coeffs/C_C
-    pair_coeff 3b 1 1 1 model_coeffs/C_C_C
-    pair_coeff 3b 1 1 2 model_coeffs/C_C_Si
-    pair_coeff 1 2 model_coeffs/C_Si
-    pair_coeff 3b 1 2 2 model_coeffs/C_Si_Si
-    pair_coeff 3b 2 1 1 model_coeffs/Si_C_C
-    pair_coeff 3b 2 1 2 model_coeffs/Si_C_Si
-    pair_coeff 3b 2 2 2 model_coeffs/Si_Si_Si
+    pair_coeff 2 2 potential_files/Si_Si
+    pair_coeff 1 1 potential_files/C_C
+    pair_coeff 3b 1 1 1 potential_files/C_C_C
+    pair_coeff 3b 1 1 2 potential_files/C_C_Si
+    pair_coeff 1 2 potential_files/C_Si
+    pair_coeff 3b 1 2 2 potential_files/C_Si_Si
+    pair_coeff 3b 2 1 1 potential_files/Si_C_C
+    pair_coeff 3b 2 1 2 potential_files/Si_C_Si
+    pair_coeff 3b 2 2 2 potential_files/Si_Si_Si
 ```
 
 

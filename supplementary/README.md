@@ -1,3 +1,9 @@
 # Supplementary Information  
 ## Radial cutoff optimization  
-![comp_space](https://github.com/SubhashUFlorida/SiC-MLIP/assets/97231768/971e3d9d-5682-45ae-9d00-ab1a92134867)
+* Two-Body  
+<img width="468" alt="Errorvs2body" src="https://github.com/SubhashUFlorida/SiC-MLIP/assets/97231768/6b71acc7-aacd-4165-a200-a5a438b42627">
+
+* Three-Body
+<img width="468" alt="Errorvs3body" src="https://github.com/SubhashUFlorida/SiC-MLIP/assets/97231768/e32b8203-8482-46ae-87a4-3406e1e4e905">
+
+  

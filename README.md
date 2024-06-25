@@ -4,7 +4,7 @@ This folder documents the development of a machine learned interatomic potential
 This folder includes data featurization scripts. The input data file for featurization can be found on the [Dropbox](https://www.dropbox.com/scl/fo/q3i0kfc37l0tygk4vk6ng/h?rlkey=bf0m9bd6375wxrks2wo8is0su&dl=0).
 ## Training
 This folder contains the model training script to reproduce the developed model. The specific training and testing keys, *'train_data.pkl'* and *'test_data.pkl'*, respectively, have been provided.    
-The model hyperparameters include ridge and curvature regularizers, and a energy/force weight term. The regularizer hyperparameter values can be found in the *'regularizer'* variable (line 281) and the weight hyperparameter value can be found in the *'model.fit_from_file'* function call (line 286) within 
+The model hyperparameters include ridge and curvature regularizers, and a energy/force weight term. The regularizer hyperparameter values can be found in the *'regularizer'* variable (line 281) and the weight hyperparameter value can be found in the *'model.fit_from_file'* function call (line 286) within [*'/training/model_train.py'*](https://github.com/SubhashUFlorida/SiC-MLIP/blob/main/training/model_train.py).  
 **Note:** Reproducing the model is not necessary for use, one can simply use the model files found in the folder [*'/model_files/potential_files/'*](https://github.com/michaelmacisaac/MLIPs/tree/main/SiC/model_files/model_coeffs).     
 
 ## Model Files

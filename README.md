@@ -8,7 +8,9 @@ The model hyperparameters include ridge and curvature regularizers, and a energy
 **Note:** Reproducing the model is not necessary for use, one can simply use the model files found in the folder [*'/model_files/potential_files/'*](https://github.com/michaelmacisaac/MLIPs/tree/main/SiC/model_files/model_coeffs).     
 
 ## Model Files
-This folder contains the trained model saved in a json file and the LAMMPS model files.
+This folder contains the trained model saved in a json file and the LAMMPS model files.  
+## VASP Validation  
+This folder includes a VASP relaxation of a carbon-terminated SiC-3C (001) surface exhibiting the dimer-reconstruction  
 ## LAMMPS 
 This folder serves as a resource for using the developed MLIP in LAMMPS simulations, including simulations used during MLIP validation.  
 For lammps installation and compilation details please refer to [UF3 LAMMPS plug-in](https://github.com/uf3/uf3/tree/master/lammps_plugin).
